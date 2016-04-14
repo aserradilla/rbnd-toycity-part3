@@ -28,6 +28,16 @@ class Customer
                 transaction = Transaction.new(self,product)
         end
 
+        def devolution(product)
+                transactions = Transaction.all
+                transactions.each do |transaction|
+                        if transaction.costumer == self && transaction.product == product
+                                return product.devolution
+                        end
+                end
+                raise DevolutionNotAcceptedError, "There is no transaction between '#{self.name}' and '#{product.title}'"
+        end
+
         private
 
         # Adds a costumer to the array if it doesn't exists already

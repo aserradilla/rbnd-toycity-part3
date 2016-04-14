@@ -35,11 +35,17 @@ class Product
                 Product.in_stock.include?(self)
         end
 
+        # Substracts 1 from the stock
         def purchase
                 if @stock <= 0
                         raise OutOfStockError, "'#{@title}' is out of stock."
                 end
                 @stock-=1
+        end
+
+        # Adds 1 to the stock
+        def devolution
+                @stock+=1
         end
 
         private

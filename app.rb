@@ -9,7 +9,7 @@ Product.new(title: "LEGO Iron Man vs. Ultron", price: 22.99, stock: 55)
 Product.new(title: "Nano Block Empire State Building", price: 49.99, stock: 12)
 Product.new(title: "LEGO Firehouse Headquarter", price: 199.99, stock: 0)
 
-puts Product.all.count # Should return 3
+puts "Product count: #{Product.all.count}" # Should return 3
 
 # Product.new(title: "LEGO Iron Man vs. Ultron", price: 22.99, stock: 55)
 # Should return DuplicateProductError: 'LEGO Iron Man vs. Ultron' already exists. (WORKS!)
@@ -17,16 +17,16 @@ puts Product.all.count # Should return 3
 nanoblock = Product.find_by_title("Nano Block Empire State Building")
 firehouse = Product.find_by_title("LEGO Firehouse Headquarter")
 
-puts nanoblock.title # Should return 'Nano Block Empire State Building'
-puts nanoblock.price # Should return 49.99
-puts nanoblock.stock # Should return 12
-puts nanoblock.in_stock? # Should return true
-puts firehouse.in_stock? # Should return false
+puts "Nanoblock title: #{nanoblock.title}" # Should return 'Nano Block Empire State Building'
+puts "Nanobloc.price: #{nanoblock.price}" # Should return 49.99
+puts "Nanoblock stock: #{nanoblock.stock}" # Should return 12
+puts "Are there nanoblocks in stock? #{nanoblock.in_stock?}" # Should return true
+puts "Are there firhouses in stock? #{firehouse.in_stock?}" # Should return false
 
 products_in_stock = Product.in_stock
 # Should return an array of all products with a stock greater than zero
-puts products_in_stock.include?(nanoblock) # Should return true
-puts products_in_stock.include?(firehouse) # Should return false
+puts "Are there nanoblocks in stock? #{products_in_stock.include?(nanoblock)}" # Should return true
+puts "Are there firhouses in stock? ##{products_in_stock.include?(firehouse)}" # Should return false
 
 # CUSTOMERS
 
@@ -55,12 +55,21 @@ puts "Nanoblock stock: #{nanoblock.stock}" # Should return 11
 
 # PURCHASES
 
-puts walter.purchase(nanoblock)
+puts "Purchase: #{walter.purchase(nanoblock)}" # Returns a new transaction
 
 puts "Transaction count: #{Transaction.all.count}" # Should return 2
 
 transaction2 = Transaction.find(2)
 puts "Find second transaction (product is nanoblock?): #{transaction2.product == nanoblock}" # Should return true
 
-walter.purchase(firehouse)
+# walter.purchase(firehouse)
 # Should return OutOfStockError: 'LEGO Firehouse Headquarter' is out of stock. (WORKS!)
+
+# FEATURES
+# 1. Added methods for a costumer to be able to return a product (if he has indeed bought that object)
+
+t = Transaction.new(walter,nanoblock)
+
+puts "Nanoblock stock: #{nanoblock.stock}" # Should return 9
+puts "Devolution: #{walter.devolution(nanoblock)}" # Should return 10
+# puts walter.devolution(firehouse) # Should return an error because walter didnt interact with firehouse (WORKS!)

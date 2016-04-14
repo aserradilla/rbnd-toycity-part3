@@ -7,3 +7,6 @@ end
 
 class OutOfStockError < StandardError
 end
+
+class DevolutionNotAcceptedError < StandardError
+end

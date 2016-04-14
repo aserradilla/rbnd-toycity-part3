@@ -3,7 +3,8 @@ class Transaction
 
         @@transactions = []
 
-        # Initializes a transaction
+        # Initializes a transaction, buy = true means its a buying transaction
+        # false means its a devolution
         def initialize(costumer, product)
                 @costumer = costumer
                 @product = product
@@ -29,10 +30,6 @@ class Transaction
 
         # Finds a transaction by its id
         def self.find(id)
-                @@transactions.each do |transaction|
-                        if transaction.id == id
-                                return transaction
-                        end
-                end
+                @@transactions[id-1]
         end
 end
