@@ -23,6 +23,11 @@ class Customer
                 end
         end
 
+        # Purchases a product, decreases stock by 1
+        def purchase
+
+        end
+
         private
 
         # Adds a costumer to the array if it doesn't exists already
