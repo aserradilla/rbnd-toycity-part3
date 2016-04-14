@@ -1,24 +1,24 @@
 class Customer
         attr_reader :name
 
-        @@costumers = []
+        @@customers = []
 
-        # Initializes a costumer
+        # Initializes a customer
         def initialize(options={})
                 @name = options[:name]
-                add_to_costumers
+                add_to_customers
         end
 
-        # Returns all the costumers
+        # Returns all the customers
         def self.all
-                @@costumers
+                @@customers
         end
 
-        # Finds a costumer by its name
+        # Finds a customer by its name
         def self.find_by_name(name)
-                @@costumers.each do |costumer|
-                        if costumer.name == name
-                                return costumer
+                @@customers.each do |customer|
+                        if customer.name == name
+                                return customer
                         end
                 end
         end
@@ -31,7 +31,7 @@ class Customer
         def devolution(product)
                 transactions = Transaction.all
                 transactions.each do |transaction|
-                        if transaction.costumer == self && transaction.product == product
+                        if transaction.customer == self && transaction.product == product
                                 return product.devolution
                         end
                 end
@@ -40,13 +40,13 @@ class Customer
 
         private
 
-        # Adds a costumer to the array if it doesn't exists already
-        def add_to_costumers
-                @@costumers.each do |costumer|
-                        if costumer.name == @name
-                                raise DuplicateCostumerError, "'#{@name}' already exists."
+        # Adds a customer to the array if it doesn't exists already
+        def add_to_customers
+                @@customers.each do |customer|
+                        if customer.name == @name
+                                raise DuplicatecustomerError, "'#{@name}' already exists."
                         end
                 end
-                @@costumers << self
+                @@customers << self
         end
 end

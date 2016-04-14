@@ -1,0 +1,17 @@
+1. How long did you spend working on this project?
+
+About 4 hours aproximately.
+
+2. What was the most rewarding challenge you conquered?
+
+Implementing the find_by method which uses options_hash as an argument. It was also very rewarding to implement the purchase and devolutions methods!
+
+3. What two additional features did you build? Why?
+
+A find_by method which permits you to find Transactions by a customer name, a product title or both.
+A method to permit a user to return its product.
+
+4. Where do you still have room to grow?
+
+I had a bit of trouble in the find_by method, and i still have ...
+Using irb it shows the right result but executing app.rb shows the wrong result when searching for both product title and customer name.
