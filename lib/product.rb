@@ -35,6 +35,13 @@ class Product
                 Product.in_stock.include?(self)
         end
 
+        def purchase
+                if @stock <= 0
+                        raise OutOfStockError, "'#{@title}' is out of stock."
+                end
+                @stock-=1
+        end
+
         private
 
         # Adds a product to the array if it doesn't exists already

@@ -24,8 +24,8 @@ class Customer
         end
 
         # Purchases a product, decreases stock by 1
-        def purchase
-
+        def purchase(product)
+                transaction = Transaction.new(self,product)
         end
 
         private

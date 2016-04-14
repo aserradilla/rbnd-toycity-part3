@@ -33,34 +33,34 @@ puts products_in_stock.include?(firehouse) # Should return false
 Customer.new(name: "Walter Latimer")
 Customer.new(name: "Julia Van Cleve")
 
-puts Customer.all.count # Should return 2
+puts "Customer count: #{Customer.all.count}" # Should return 2
 
 # Customer.new(name: "Walter Latimer")
 # Should return DuplicateCustomerError: 'Walter Latimer' already exists. (WORKS!)
 
 walter = Customer.find_by_name("Walter Latimer")
 
-puts walter.name # Should return "Walter Latimer"
+puts "Customer name: #{walter.name}" # Should return "Walter Latimer""
 
 # TRANSACTIONS
 
 transaction = Transaction.new(walter, nanoblock)
 
-puts transaction.id # Should return 1
-puts transaction.product == nanoblock # Should return true
-puts transaction.product == firehouse # Should return false
-puts transaction.customer == walter # Should return true
+puts "Transaction id: #{transaction.id}" # Should return 1
+puts "Transaction product (nanoblock?): #{transaction.product == nanoblock}" # Should return true
+puts "Transaction product (firehouse?) #{transaction.product == firehouse}" # Should return false
+puts "Transaction customer (walter?): #{transaction.customer == walter}" # Should return true
 
-puts nanoblock.stock # Should return 11
+puts "Nanoblock stock: #{nanoblock.stock}" # Should return 11
 
 # PURCHASES
 
-# puts walter.purchase(nanoblock)
+puts walter.purchase(nanoblock)
 
-# puts Transaction.all.count # Should return 2
+puts "Transaction count: #{Transaction.all.count}" # Should return 2
 
-# transaction2 = Transaction.find(2)
-# puts transaction2.product == nanoblock # Should return true
+transaction2 = Transaction.find(2)
+puts "Find second transaction (product is nanoblock?): #{transaction2.product == nanoblock}" # Should return true
 
-# walter.purchase(firehouse)
-# Should return OutOfStockError: 'LEGO Firehouse Headquarter' is out of stock.
+walter.purchase(firehouse)
+# Should return OutOfStockError: 'LEGO Firehouse Headquarter' is out of stock. (WORKS!)

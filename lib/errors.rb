@@ -4,3 +4,6 @@ end
 
 class DuplicateCostumerError < StandardError
 end
+
+class OutOfStockError < StandardError
+end
